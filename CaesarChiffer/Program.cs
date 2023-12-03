@@ -1,6 +1,8 @@
 ﻿using System.Text;
 using CaesarChiffer.Services;
 
+
+// TODO rename project and solution to Caesar or something else, Chiffer is the Norwegian word for it
 namespace CaesarChiffer;
 
 internal static class Program

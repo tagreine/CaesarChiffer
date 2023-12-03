@@ -4,7 +4,7 @@ namespace CaesarChiffer.Services;
 
 public static class CaesarCipher
 {
-    public static StringBuilder GenerateText(string text, int shift, string method, StringBuilder processedText, string alphabet)
+    public static string GenerateText(string text, int shift, string method, StringBuilder processedText, string alphabet)
     {
         foreach (var letter in text)
         {
@@ -39,6 +39,6 @@ public static class CaesarCipher
                 processedText.Append(alphabet[idx]);
         }
 
-        return processedText;
+        return processedText.ToString();
     }
 }
