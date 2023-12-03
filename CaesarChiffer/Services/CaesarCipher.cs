@@ -4,10 +4,18 @@ namespace CaesarChiffer.Services;
 
 public static class CaesarCipher
 {
-    public static void GenerateText(string text, int shift, string method, StringBuilder encryptedText, string alphabet)
+    public static void GenerateText(string text, int shift, string method, StringBuilder processedText, string alphabet)
     {
         foreach (var letter in text)
         {
+            // continue to next line if next line character
+            if (letter == '\n')
+            {
+                processedText.Append('\n');
+                continue;
+            }
+            
+            // create a mutable character
             var character = letter;
             if (method == "--encrypt" && letter == ' ')
                 character = 'æ';
@@ -22,12 +30,12 @@ public static class CaesarCipher
             
             if (method == "--decrypt")
             {
-                encryptedText.Append(alphabet[idx] == 'æ' ? ' ' : alphabet[idx]);
+                processedText.Append(alphabet[idx] == 'æ' ? ' ' : alphabet[idx]);
             }
             else
-                encryptedText.Append(alphabet[idx]);
+                processedText.Append(alphabet[idx]);
         }
         
-        Console.WriteLine($"encrypted text : {encryptedText}");
+        Console.WriteLine($"encrypted text : {processedText}");
     }
 }
