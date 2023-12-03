@@ -21,4 +21,7 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CaesarChiffer\CaesarChiffer.csproj" />
+  </ItemGroup>
 </Project>
