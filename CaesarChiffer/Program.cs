@@ -7,6 +7,7 @@ internal static class Program
 {
     private static void Main(string[] args)
     {
+        // TODO move all object instantiations, i.e., new Object, into a Factory method
         var log = new LogInfo();
         var argumentValidator = new ArgumentValidator(args, log);
         
@@ -17,10 +18,11 @@ internal static class Program
         if (string.IsNullOrEmpty(text))
             return;
         
+        // TODO move rest of arguments into the ArgumentValidator class to validate (maybe rename class to ArgumentProcessor)
         var shiftNum = int.Parse(args[3]);
         var method = args[4];
         var encryptedText = new StringBuilder();
-        CaesarCipher.GenerateText(text, shiftNum, method, encryptedText, Alphabet.GetAlphabet());
+        var processedText = CaesarCipher.GenerateText(text, shiftNum, method, encryptedText, Alphabet.GetAlphabet());
+        Console.WriteLine($"encrypted text : {processedText}");
     }
 }
-

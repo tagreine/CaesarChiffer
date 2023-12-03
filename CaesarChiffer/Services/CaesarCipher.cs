@@ -4,7 +4,7 @@ namespace CaesarChiffer.Services;
 
 public static class CaesarCipher
 {
-    public static void GenerateText(string text, int shift, string method, StringBuilder processedText, string alphabet)
+    public static StringBuilder GenerateText(string text, int shift, string method, StringBuilder processedText, string alphabet)
     {
         foreach (var letter in text)
         {
@@ -16,12 +16,15 @@ public static class CaesarCipher
             }
             
             // create a mutable character
+            // TODO remove hardcoded character 'æ' in the alphabet. Maybe change to something more general than 'æ', to include other languages
+            // TODO add alphabet with upper with conditions
             var character = letter;
             if (method == "--encrypt" && letter == ' ')
                 character = 'æ';
             
             var index = alphabet.IndexOf(character);
             
+            // generate indexes of the Caesar Cipher shifted letters
             int idx; 
             if (method == "--encrypt")
                 idx = (index + shift) % alphabet.Length;
@@ -35,7 +38,7 @@ public static class CaesarCipher
             else
                 processedText.Append(alphabet[idx]);
         }
-        
-        Console.WriteLine($"encrypted text : {processedText}");
+
+        return processedText;
     }
 }
