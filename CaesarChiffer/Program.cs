@@ -9,6 +9,7 @@ internal static class Program
     {
         // TODO move all object instantiations, i.e., new Object, into a Factory method
         var log = new LogInfo();
+        // TODO create interface for ArgumentValidator
         var argumentValidator = new ArgumentValidator(args, log);
         
         if (!argumentValidator.Validate())
