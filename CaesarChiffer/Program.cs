@@ -10,7 +10,7 @@ internal static class Program
 {
     private static void Main(string[] args)
     {
-        // TODO add a --help console argument to show how to use the application
+        // TODO add a --help/-h console argument to show how to use the application
         // TODO move all object instantiations, i.e., new Object, into a Factory method
         IApplicationLifecycle appLifecycle = new ApplicationLifecycle();
         IArgumentHandler argumentHandler = new ArgumentHandler(args, appLifecycle);
